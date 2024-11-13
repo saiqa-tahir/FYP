@@ -1,4 +1,3 @@
 const mongoose = require ('mongoose');
 const resumeSchema = new mongoose.Schema({});
-HTMLHRElement
-g
+HTMLHREl
