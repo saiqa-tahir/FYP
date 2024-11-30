@@ -9,9 +9,9 @@ function App() {
     <>
 
 
-    
+
     <SeekerNavbar/>
-    <div></div>
+  
         </>
   )
 }
