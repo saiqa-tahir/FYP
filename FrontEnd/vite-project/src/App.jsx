@@ -8,6 +8,10 @@ function App() {
   return (
     <>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0547a52926d737ad5654848e544e57c20e95c8ba
     
     <SeekerNavbar/>
     
