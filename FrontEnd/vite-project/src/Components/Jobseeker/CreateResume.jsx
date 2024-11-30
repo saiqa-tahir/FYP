@@ -16,6 +16,9 @@ const CreateResume = ({ togglePopup }) => {
     skills: '',
     experience: [
       {
+
+
+      
         companyName: '',
         jobTitle: '',
         duration: '',
