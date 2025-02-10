@@ -1,8 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 const bodyParser = require('body-parser');
+const authRoutes = require('./routes/SeekerAuthRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
+const jobPostRoutes = require('./routes/jobPostRoutes');
 
 const app = express();
 
@@ -24,8 +27,10 @@ mongoose.connect('mongodb+srv://Zohaib:Zohaib@cluster0.v7oju4g.mongodb.net/', {
   });
 
 // Routes
-app.use('/api/resumes', resumeRoutes);
+app.use('/api/auth', authRoutes);
 
+app.use('/api/resumes', resumeRoutes);
+app.use('/api/jobs', jobPostRoutes);
 // Start the server
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

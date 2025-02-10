@@ -16,7 +16,6 @@ const CreateResume = ({ togglePopup }) => {
     skills: '',
     experience: [
       {
-    
         companyName: '',
         jobTitle: '',
         duration: '',
@@ -26,7 +25,10 @@ const CreateResume = ({ togglePopup }) => {
     hobbies: '',
   });
 
-  // Handle form input change
+  // Get email from localStorage
+  const userEmail = localStorage.getItem('userEmail');
+
+  // Set email automatically in the form if available
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -59,11 +61,13 @@ const CreateResume = ({ togglePopup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Attach email from local storage
+      const resumeData = { ...formData, email: userEmail };
       // Send the form data to the backend API
-      const response = await axios.post('http://localhost:5000/api/resumes/create', formData);
+      const response = await axios.post('http://localhost:5000/api/resumes/create', resumeData);
       console.log('Resume created successfully', response.data);
       togglePopup();  // Close the popup on success
-    } catch (error) {;
+    } catch (error) {
       console.error('Error creating resume', error.response?.data || error);
     }
   };
@@ -99,7 +103,7 @@ const CreateResume = ({ togglePopup }) => {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
+                  value={userEmail|| formData.email }
                   onChange={handleInputChange}
                   className="w-full rounded border px-3 py-2"
                   placeholder="Your Email"
